@@ -44,47 +44,7 @@ var Main = React.createClass({
 							results: data
 						})
 
-						// After we've received the result... then post the search term to our saved articles.
-						// helpers.postHistory(this.state.searchTerm)
-						// 	.then(function(data){
-						// 		console.log("Updated!");
-						//
-						// 		// After we've done the post... then get the updated history
-						// 		helpers.getHistory()
-						// 			.then(function(response){
-						// 				console.log("Current History", response.data);
-						// 				if (response != this.state.history){
-						// 					console.log ("History", response.data);
-						//
-						// 					this.setState({
-						// 						history: response.data
-						// 					})
-						// 				}
-						// 			}.bind(this))
-						// 	}.bind(this)
-						// )
-					}
-				}.bind(this))
-
-			}
-	},
-
-	// The moment the page renders get the History
-	// componentDidMount: function() {
-	//
-	// 	// Get the latest history.
-	// 	helpers.getHistory()
-	// 		.then(function(response){
-	// 			if (response != this.state.history){
-	// 				console.log ("History", response.data);
-	//
-	// 				this.setState({
-	// 					history: response.data
-	// 				})
-	// 			}
-	// 		}.bind(this))
-	// },
-
+						
 	// Here we render the function
 	render: function(){
 

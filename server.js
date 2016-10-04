@@ -24,6 +24,7 @@ app.use(express.static('./public'));
 
 // MongoDB Configuration configuration (Change this URL to your own DB)
 mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds041496.mlab.com:41496/heroku_566sh6mn');
+// mongoose.connect('mongodb://localhost/NYTReact');
 var db = mongoose.connection;
 
 db.on('error', function (err) {
@@ -60,19 +61,28 @@ app.get('/api/', function(req, res) {
 });
 
 // This is the route we will send POST requests to save each search.
-app.post('/api/', function(req, res){
+app.post('/api/saved', function(req, res){
   //var newSearch = new History(req.body);
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time
-  History.create({"location": req.body.location, "date": Date.now()}, function(err){
+  Saved.create({"title": req.body.title, "date": Date.now(), "url": req.body.url}, function(err, saved){
     if(err){
       console.log(err);
     }
     else {
-      res.send("Saved Search");
+      console.log(saved);
+      res.send(saved);
     }
   })
+});
+
+app.post('/api/delete/:id', function(req, res){
+
+	Saved.find({"_id": req.params.id}).remove(function(){
+		console.log('article deleted');
+
+	})
 });
 
 
